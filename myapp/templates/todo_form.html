@@ -1,0 +1,49 @@
+
+{% extends 'base.html' %}
+{% block body %}
+<div class="m2_U">
+    <h1 class="m2_U1">
+        {% if todo %} ✏️ Update Todo {% else %} ➕ Create Todo {% endif %}
+    </h1>
+
+    <a href="{% url 'Todolist' %}" class="m2_U2">
+        ⬅ Back to List
+    </a>
+
+    <form method="post" class="m2_U3">
+        {% csrf_token %}
+
+        <!-- Title -->
+        <div class="m2_U4">
+            <label for="title" class="m2_U5">Title:</label>
+            <input type="text" name="title" id="title"
+                value="{% if todo %}{{ todo.title }}{% endif %}"
+                class="m2_U6" 
+                required>
+        </div>
+
+        <!-- Description -->
+        <div class="m2_U7">
+            <label for="description" class="m2_U8">Description:</label>
+            <input type="text" name="description" id="description"
+                value="{% if todo %}{{ todo.description }}{% endif %}"
+                class="m2_U9" 
+                required>
+        </div>
+
+        <!-- Completed Checkbox -->
+        <div class="m2_U10">
+            <input type="checkbox" name="completed" id="completed"
+                class="m2_U11"
+                {% if todo and todo.completed %}checked{% endif %}>
+            <label for="completed" class="m2_U12">Completed</label>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit"
+            class="m2_U13">
+            {% if todo %} ✅ Update Todo {% else %} ➕ Create Todo {% endif %}
+        </button>
+    </form>
+</div>
+{% endblock %}

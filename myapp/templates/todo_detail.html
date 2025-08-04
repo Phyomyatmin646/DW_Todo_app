@@ -1,0 +1,20 @@
+
+{% extends 'base.html' %}
+{% block body %}
+<div class="m2_d">
+    <a href="{% url 'Todolist' %}" class="m2_d1">⬅ Back to List</a>
+    <h2>Todo Details</h2>
+
+    <p class="m2_d5"><span class="m2_d2">Title:</span> {{ todo.title }}</p>
+    <p class="m2_d6"><span class="m2_d3">Description:</span> {{ todo.description }}</p>
+    <p class="m2_d7"><span class="m2_d4">Completed:</span> 
+        {% if todo.completed %}
+            <span class="m2_d8">YES</span>
+        {% else %}
+            <span class="m2_d9">NO</span>
+        {% endif %}
+    </p>
+    <p class="m2_d10"><span class="m2_d12">Created At:</span> {{ todo.created_at }}</p>
+    <p class="m2_d11"><span class="m2_d13">Updated At:</span> {{ todo.updated_at }}</p>
+</div>
+{% endblock %}
