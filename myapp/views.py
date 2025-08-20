@@ -3,10 +3,10 @@ from .models import TodoModel
 # Create your views here.
 def Todolist(request):
     todo=TodoModel.objects.all()
-    contex={
+    context={
         'todo':todo
     }
-    return render(request,'index.html',contex)
+    return render(request,'index.html',context)
 # create function
 def todocreate(request):
     if request.method == 'POST':
@@ -18,7 +18,7 @@ def todocreate(request):
             description=description,
             completed=completed,
         )
-        return redirect('todo_list')
+        return redirect('Todolist')
     return render(request,'todo_form.html')
 #Detail Function
 def tododetail(request,pk):
